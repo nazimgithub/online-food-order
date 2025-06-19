@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link href="./assets/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header will be loaded here -->
+  <div id="header"></div>
+  <section class="bg-light py-3 py-md-5">
+    <div class="container">
+      <!-- Table to Display Filtered Items -->
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price (₹)</th>
+          </tr>
+        </thead>
+        <tbody id="itemTableBody"></tbody>
+      </table>
+      </table>
+    </div>
+
+    </div>
+  </section>
+  <!-- Footer will be loaded here -->
+  <div id="footer"></div>
+  <script>
+    const data = {
+      "categories": [
+        {
+          "id": 1,
+          "name": "Margherita Pizza",
+          "description": "Classic delight with 100% real mozzarella cheese",
+          "price": 8.99,
+          "image": "https://example.com/images/margherita.jpg",
+          "category": "Pizza",
+          "availability": true,
+          "rating": 4.5,
+          "tags": ["vegetarian", "cheese"]
+        },
+        {
+          "id": 2,
+          "name": "Pepperoni Pizza",
+          "description": "Pepperoni, mozzarella, tomato sauce",
+          "price": 10.99,
+          "image": "https://example.com/images/pepperoni.jpg",
+          "category": "Pizza",
+          "availability": true,
+          "rating": 4.6,
+          "tags": ["meat", "spicy"]
+        },
+        {
+          "id": 3,
+          "name": "Chicken Burger",
+          "description": "Grilled chicken with lettuce and mayo",
+          "price": 6.49,
+          "image": "https://example.com/images/chicken_burger.jpg",
+          "category": "Burgers",
+          "availability": true,
+          "rating": 4.3,
+          "tags": ["chicken"]
+        },
+        {
+          "id": 4,
+          "name": "Veggie Burger",
+          "description": "Patty made from chickpeas, beans and vegetables",
+          "price": 5.99,
+          "image": "https://example.com/images/veggie_burger.jpg",
+          "category": "Burgers",
+          "availability": false,
+          "rating": 4.0,
+          "tags": ["vegetarian"]
+        },
+        {
+          "id": 5,
+          "name": "French Fries",
+          "description": "Crispy potato fries with ketchup",
+          "price": 2.99,
+          "image": "https://example.com/images/fries.jpg",
+          "category": "Sides",
+          "availability": true,
+          "rating": 4.2,
+          "tags": ["vegetarian", "sides"]
+        },
+        {
+          "id": 6,
+          "name": "Onion Rings",
+          "description": "Golden fried onion rings with dip",
+          "price": 3.99,
+          "image": "https://example.com/images/onion_rings.jpg",
+          "category": "Sides",
+          "availability": true,
+          "rating": 4.1,
+          "tags": ["vegetarian"]
+        },
+        {
+          "id": 7,
+          "name": "Tandoori Chicken",
+          "description": "Spicy grilled chicken marinated in Indian spices",
+          "price": 12.99,
+          "image": "https://example.com/images/tandoori_chicken.jpg",
+          "category": "Main Course",
+          "availability": true,
+          "rating": 4.7,
+          "tags": ["spicy", "indian"]
+        },
+        {
+          "id": 8,
+          "name": "Butter Chicken",
+          "description": "Creamy tomato-based curry with chicken",
+          "price": 11.99,
+          "image": "https://example.com/images/butter_chicken.jpg",
+          "category": "Main Course",
+          "availability": true,
+          "rating": 4.8,
+          "tags": ["indian", "rich"]
+        },
+        {
+          "id": 9,
+          "name": "Paneer Tikka",
+          "description": "Marinated cottage cheese grilled with spices",
+          "price": 9.49,
+          "image": "https://example.com/images/paneer_tikka.jpg",
+          "category": "Main Course",
+          "availability": true,
+          "rating": 4.4,
+          "tags": ["vegetarian", "grilled"]
+        },
+        {
+          "id": 10,
+          "name": "Caesar Salad",
+          "description": "Romaine lettuce, croutons and Caesar dressing",
+          "price": 5.99,
+          "image": "https://example.com/images/caesar_salad.jpg",
+          "category": "Salads",
+          "availability": true,
+          "rating": 4.0,
+          "tags": ["healthy"]
+        },
+        {
+          "id": 11,
+          "name": "Greek Salad",
+          "description": "Tomatoes, cucumbers, feta, olives and olive oil",
+          "price": 6.49,
+          "image": "https://example.com/images/greek_salad.jpg",
+          "category": "Salads",
+          "availability": true,
+          "rating": 4.3,
+          "tags": ["healthy", "vegetarian"]
+        },
+        {
+          "id": 12,
+          "name": "Tomato Soup",
+          "description": "Creamy tomato soup with croutons",
+          "price": 4.99,
+          "image": "https://example.com/images/tomato_soup.jpg",
+          "category": "Soups",
+          "availability": true,
+          "rating": 4.1,
+          "tags": ["vegetarian", "warm"]
+        },
+        {
+          "id": 13,
+          "name": "Chicken Noodle Soup",
+          "description": "Hearty soup with chicken, noodles and vegetables",
+          "price": 5.49,
+          "image": "https://example.com/images/chicken_soup.jpg",
+          "category": "Soups",
+          "availability": true,
+          "rating": 4.4,
+          "tags": ["comfort", "non-vegetarian"]
+        },
+        {
+          "id": 14,
+          "name": "Chocolate Milkshake",
+          "description": "Thick and creamy chocolate milkshake",
+          "price": 4.49,
+          "image": "https://example.com/images/chocolate_milkshake.jpg",
+          "category": "Beverages",
+          "availability": true,
+          "rating": 4.7,
+          "tags": ["dessert", "drink"]
+        },
+        {
+          "id": 15,
+          "name": "Mango Smoothie",
+          "description": "Fresh mango blended with yogurt and ice",
+          "price": 4.99,
+          "image": "https://example.com/images/mango_smoothie.jpg",
+          "category": "Beverages",
+          "availability": true,
+          "rating": 4.6,
+          "tags": ["fruit", "healthy"]
+        },
+        {
+          "id": 16,
+          "name": "Iced Coffee",
+          "description": "Cold brew coffee with milk and ice",
+          "price": 3.99,
+          "image": "https://example.com/images/iced_coffee.jpg",
+          "category": "Beverages",
+          "availability": true,
+          "rating": 4.2,
+          "tags": ["caffeine", "drink"]
+        },
+        {
+          "id": 17,
+          "name": "Gulab Jamun",
+          "description": "Soft fried dough balls soaked in rose syrup",
+          "price": 3.49,
+          "image": "https://example.com/images/gulab_jamun.jpg",
+          "category": "Desserts",
+          "availability": true,
+          "rating": 4.9,
+          "tags": ["sweet", "indian"]
+        },
+        {
+          "id": 18,
+          "name": "Chocolate Brownie",
+          "description": "Rich chocolate brownie served with chocolate sauce",
+          "price": 4.25,
+          "image": "https://example.com/images/chocolate_brownie.jpg",
+          "category": "Desserts",
+          "availability": true,
+          "rating": 4.8,
+          "tags": ["dessert", "chocolate"]
+        },
+        {
+          "id": 19,
+          "name": "Ice Cream Sundae",
+          "description": "Vanilla ice cream topped with chocolate syrup and nuts",
+          "price": 3.99,
+          "image": "https://example.com/images/ice_cream_sundae.jpg",
+          "category": "Desserts",
+          "availability": true,
+          "rating": 4.5,
+          "tags": ["dessert", "cold"]
+        },
+        {
+          "id": 20,
+          "name": "Masala Dosa",
+          "description": "South Indian rice crepe filled with spiced potatoes",
+          "price": 7.49,
+          "image": "https://example.com/images/masala_dosa.jpg",
+          "category": "Indian",
+          "availability": true,
+          "rating": 4.6,
+          "tags": ["vegetarian", "south-indian"]
+        }
+      ]
+    };
+
+    const tableBody = document.getElementById("itemTableBody");
+    tableBody.innerHTML = ""; // Clear previous rows
+
+    const category = data.categories.filter(cat => cat.category === sessionStorage.getItem('category'));
+
+    if (category) {
+      category.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><img src="${item.image}" alt="${item.name}" width="50"></td>
+          <td>${item.name}</td>
+          <td>₹${item.price}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+  </script>
+  <script src="./assets/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

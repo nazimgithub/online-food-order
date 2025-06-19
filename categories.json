@@ -1,0 +1,74 @@
+{
+  "food_categories": [
+    {
+      "category": "Fruits",
+      "items": [
+        "Apple",
+        "Banana",
+        "Orange",
+        "Mango",
+        "Strawberry"
+      ]
+    },
+    {
+      "category": "Vegetables",
+      "items": [
+        "Carrot",
+        "Broccoli",
+        "Spinach",
+        "Potato",
+        "Tomato"
+      ]
+    },
+    {
+      "category": "Grains",
+      "items": [
+        "Rice",
+        "Wheat",
+        "Oats",
+        "Barley",
+        "Quinoa"
+      ]
+    },
+    {
+      "category": "Proteins",
+      "items": [
+        "Chicken",
+        "Beef",
+        "Tofu",
+        "Lentils",
+        "Eggs"
+      ]
+    },
+    {
+      "category": "Dairy",
+      "items": [
+        "Milk",
+        "Cheese",
+        "Yogurt",
+        "Butter",
+        "Cream"
+      ]
+    },
+    {
+      "category": "Beverages",
+      "items": [
+        "Water",
+        "Juice",
+        "Soda",
+        "Tea",
+        "Coffee"
+      ]
+    },
+    {
+      "category": "Snacks",
+      "items": [
+        "Chips",
+        "Cookies",
+        "Nuts",
+        "Crackers",
+        "Popcorn"
+      ]
+    }
+  ]
+}

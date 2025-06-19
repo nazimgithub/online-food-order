@@ -1,0 +1,25 @@
+<style>
+  #cart-count {
+    background: white;
+    color: black;
+    padding: 2px 8px;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+</style>
+
+<nav class="navbar bg-danger" data-bs-theme="light">
+  <!-- Navbar content -->
+  <div class="container-fluid">
+    <a class="navbar-brand">
+      <img src="./assets/img/company-logo.jpg" alt="BootstrapBrain Logo" width="75" height="75">
+    </a>
+    <a href="cart.html" style="color: white; text-decoration: none;">
+      🛒 Cart <span id="cart-count">0</span>
+    </a>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
