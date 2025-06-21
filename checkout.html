@@ -107,7 +107,7 @@
         </div>
         <div class="row mt-3">
           <div class="col-9">
-            <button type="button" class="btn btn-danger">CANCEL</button>
+            <button type="button" class="btn btn-danger" id="myButton">CANCEL</button>
             <button type="submit" class="btn btn-primary">PAY</button>
           </div>
         </div>
@@ -210,12 +210,28 @@
 
       if (isValid) {
         Swal.fire('Success!', 'Your order has been placed successfully.', 'success');
-      } else {
-        Swal.fire('Error!', 'Please fix the errors in the form.', 'error');
+        localStorage.setItem('cart', []);
+        window.location.href = "dashboard.html";
         // Reset the form
         form.reset();
+      } else {
+        Swal.fire('Error!', 'Please fill mandatory fields in the form.', 'error');
       }
     });
+
+    document.getElementById("myButton").addEventListener("click", function () {
+      window.location.href = "items.html"; // Change this to your target URL
+    });
+
+    // Initialize cart from localStorage
+    function loadCartCount() {
+      const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+
+    // Load cart count on page load
+    window.onload = loadCartCount;
+
   </script>
 
   <script src="./assets/script.js"></script>
